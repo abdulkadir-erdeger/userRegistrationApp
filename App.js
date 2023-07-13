@@ -1,20 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+import Router from "./src/Router";
+
+import * as SQLite from "expo-sqlite";
+import { useEffect } from "react";
+
+const db = SQLite.openDatabase("veritabani");
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const createDatabaseTables = () => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        `CREATE TABLE IF NOT EXISTS users(
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          photo TEXT,
+          fullName TEXT,
+          selectedCountry TEXT,
+          selectedCity TEXT,
+          identificationNumber TEXT,
+          phone TEXT,
+          selectedGender TEXT,
+          selectedBirthDate DATE,
+          employmentStatus TEXT,
+          occupation TEXT,
+          educationLevel TEXT,
+          schoolName TEXT,
+          graduationYear DATE,
+          section TEXT,
+          skills TEXT,
+          cv TEXT,
+          projects TEXT
+        );`,
+        [],
+        (tx, result) => {
+          console.log("Database tables created");
+        },
+        (error) => {
+          console.log("Error creating database tables:", error);
+        }
+      );
+    });
+  };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  useEffect(() => {
+    createDatabaseTables();
+  }, []);
+
+  return <Router />;
+}

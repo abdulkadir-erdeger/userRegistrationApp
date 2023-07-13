@@ -1,0 +1,77 @@
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+  title: {
+    width: "80%",
+    textAlign: "left",
+    fontWeight: "700",
+    fontSize: 16,
+    marginBottom: 2,
+  },
+  title2: {
+    width: "100%",
+    fontWeight: "bold",
+    fontSize: 18,
+    marginBottom: 5,
+    backgroundColor: "white",
+    textAlign: "center",
+    paddingVertical: 6,
+  },
+  input: {
+    width: "80%",
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    backgroundColor: "#e4e6ef",
+    borderColor: "#CCC",
+  },
+  inputButton: { width: "80%", height: 40 },
+  dropdownContainer: {
+    width: "80%",
+    marginBottom: 10,
+    borderWidth: 1,
+    justifyContent: "center",
+    borderRadius: 8,
+    backgroundColor: "#e4e6ef",
+    borderColor: "#CCC",
+  },
+  dropdownLabel: {
+    fontSize: 16,
+    fontWeight: "bold",
+    paddingHorizontal: 10,
+  },
+  dropdown: {
+    height: 40,
+  },
+  button: {
+    marginTop: 10,
+    width: "80%",
+    backgroundColor: "#007AFF",
+    alignItems: "center",
+    paddingVertical: 10,
+    marginBottom: 10,
+    borderRadius: 8,
+  },
+  buttonTitle: {
+    fontSize: 16,
+    color: "white",
+  },
+  button2: {
+    marginTop: 10,
+    width: "80%",
+    backgroundColor: "white",
+    alignItems: "center",
+    paddingVertical: 10,
+    marginBottom: 10,
+    borderColor: "#007AFF",
+    borderWidth: 1,
+    borderRadius: 8,
+  },
+  buttonTitle2: {
+    fontSize: 16,
+    color: "#007AFF",
+  },
+});
