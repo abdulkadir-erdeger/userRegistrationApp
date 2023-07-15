@@ -13,7 +13,7 @@ import styles from "./UserInformationCard.style";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useFormikContext } from "formik";
 
-const UserInformationCard = ({ setCardForwarding }) => {
+const UserInformationCard = ({ formikProps, setCardForwarding }) => {
   const { values, setFieldValue } = useFormikContext();
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
@@ -148,20 +148,31 @@ const UserInformationCard = ({ setCardForwarding }) => {
         </Picker>
       </View>
 
-      <Text style={styles.title}>Kimlik No</Text>
+      <Text style={styles.title}>Kimlik No *</Text>
+      {values.identificationNumber == "" &&
+        formikProps.touched.identificationNumber && (
+          <Text style={styles.errorText}>
+            {formikProps.errors.identificationNumber}
+          </Text>
+        )}
       <TextInput
         style={styles.input}
         placeholder="Kimlik No"
         value={values.identificationNumber}
         onChangeText={(no) => setFieldValue("identificationNumber", no)}
+        onBlur={() => formikProps.setFieldTouched("identificationNumber")}
       />
 
-      <Text style={styles.title}>Telefon</Text>
+      <Text style={styles.title}>Telefon *</Text>
+      {values.phone == "" && formikProps.touched.phone && (
+        <Text style={styles.errorText}>{formikProps.errors.phone}</Text>
+      )}
       <TextInput
         style={styles.input}
         placeholder="Telefon"
         value={values.phone}
         onChangeText={(tel) => setFieldValue("phone", tel)}
+        onBlur={() => formikProps.setFieldTouched("phone")}
       />
 
       <Text style={styles.title}>Doğum Tarihi</Text>

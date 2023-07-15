@@ -105,4 +105,9 @@ export default StyleSheet.create({
     color: "white",
     fontSize: 16,
   },
+  errorText: {
+    width: "80%",
+    color: "red",
+    marginBottom: 2,
+  },
 });

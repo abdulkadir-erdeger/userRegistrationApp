@@ -34,7 +34,8 @@ const UserRegistrationScreen = ({ navigation }) => {
   };
 
   const validationSchema = Yup.object({
-    //Şuanlık herhangi bir kontrol ve sınırlandırma girilmemiştir.
+    identificationNumber: Yup.string().required("Kimlik Numarası zorunludur."),
+    phone: Yup.string().required("Telefon Numarası zorunludur."),
   });
 
   const handleSubmit = (values) => {
@@ -95,7 +96,11 @@ const UserRegistrationScreen = ({ navigation }) => {
             }
           },
           (txObj, error) => {
-            console.log("Error saving data to database:", error);
+            if (error.code === 6) {
+              Alert.alert("Hata", "Bu kimlik numarası zaten kaydedilmiş.");
+            } else {
+              console.log("Error saving data to database:", error);
+            }
           }
         );
       },
